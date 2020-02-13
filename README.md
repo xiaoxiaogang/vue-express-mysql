@@ -1,6 +1,9 @@
 # frontAndBackend
 包含vue，express，node，数据库代码的项目
 
+开发环境地址：
+http://192.168.3.2:4008/index/free
+
 Vue + Express 前后端脚手架
 =========================================
 

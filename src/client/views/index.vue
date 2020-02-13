@@ -25,10 +25,9 @@ export default {
       }
   },
     created() {
-
         this.$axios({
             method: 'get',
-            url: '/test1',
+            url: '/users/getAllData',
             data:{
 
             }

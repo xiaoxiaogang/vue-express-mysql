@@ -13,6 +13,9 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import config from '../../build/webpack.dev.conf'
+var indexRouter = require('./router/index')
+var usersRouter = require('./router/users')
+var clinicRouter = require('./router/clinicRouter')
 
 const app = express()
 
@@ -34,13 +37,11 @@ app.use(webpackDevMiddleware(compiler, {
 }))
 
 app.use(webpackHotMiddleware(compiler))
-
 app.use(express.static(path.join(__dirname, 'views')))
-app.get('/test1', function (req, res) {
-  console.log(' req.params.name:', req.params.name);
-    console.log(' req.params.name:', JSON.stringify(req.params));
-    res.send("hello express");
-});
+
+app.use('/', indexRouter);
+app.use('/users', usersRouter);
+app.use('/clinic', clinicRouter);
 
 // app.all('/secret', function (req, res, next) {
 //     console.log('Accessing the secret section ...')
@@ -62,14 +63,11 @@ app.use(function (err, req, res, next) {
 })
 
 // 设置监听端口
-const SERVER_PORT = 4005
+const SERVER_PORT = 4008
 app.listen(SERVER_PORT, () => {
   console.info(`服务已经启动，监听端口${SERVER_PORT}`)
 })
 
-
 app.set('title', 'My Site');
-
-console.log('wangg:', app.get('title'));
 
 export default app
