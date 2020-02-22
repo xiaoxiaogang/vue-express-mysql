@@ -13,6 +13,7 @@ import webpackDevMiddleware from 'webpack-dev-middleware'
 import webpackHotMiddleware from 'webpack-hot-middleware'
 
 import config from '../../build/webpack.dev.conf'
+
 var indexRouter = require('./router/index')
 var usersRouter = require('./router/users')
 var clinicRouter = require('./router/clinicRouter')
@@ -43,6 +44,7 @@ app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/clinic', clinicRouter);
 
+
 // app.all('/secret', function (req, res, next) {
 //     console.log('Accessing the secret section ...')
 //     next() // pass control to the next handler
@@ -63,11 +65,13 @@ app.use(function (err, req, res, next) {
 })
 
 // 设置监听端口
-const SERVER_PORT = 4008
+const SERVER_PORT = 4003
 app.listen(SERVER_PORT, () => {
+  console.log('aaddddddda');
   console.info(`服务已经启动，监听端口${SERVER_PORT}`)
 })
-
 app.set('title', 'My Site');
+
+
 
 export default app

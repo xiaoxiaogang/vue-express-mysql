@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="list">
     <van-list
             v-model="loading"
             :finished="finished"
@@ -43,6 +43,7 @@ export default {
                  .then( (res) => {
                      console.log('retddd', res);
                      this.list = res.result;
+                     this.finished = true;
                  })
                  .catch( (err) => {
                      console.log(err);
@@ -54,13 +55,12 @@ export default {
       }
 }
 </script>
-<style>
+<style lang="less">
+    @import  "../../../client/static/color.less";
  .clinic-platform {
    font-size: 16px;
    font-weight: bold;
    margin-bottom: 5px;
+     color:@text-color;
  }
-  .list-item{
-
-  }
  </style>

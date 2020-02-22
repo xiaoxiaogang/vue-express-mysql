@@ -2,15 +2,11 @@
 包含vue，express，node，数据库代码的项目
 
 开发环境地址：
-http://192.168.3.2:4008/index/free
+http://192.168.3.2:4003/index/child
 
 Vue + Express 前后端脚手架
 =========================================
-
-在原版本基础之上，修改了webpack的相关配置文件。使得项目可以运行build命令，编译vue相关代码。
-前端部分增加了vue全家桶（vue-router，vuex）
-后端express部分增加有history模式，支持前端路由。需要传统后端路由方式的话，请注释掉`server/index.js`中`app.use(history())`
-重新修改了文件夹结构
+一个前端单页面框架+后端express框架一起，并且加入了连接mysql相关操作，数据库文件没有直接加加进去，如果需要可以留言。已经调试通过，可以直接编译运行的项目;
 
 #### 1.10 版本
 - 去掉了相关UI组件的配置，如果需要进行配置的话可以参考官方资料
@@ -27,6 +23,8 @@ fork源：[southerncross/vue-express-dev-boilerplate](https://github.com/souther
 - Nodemon
 - Webpack
 - Npm
+- Vant
+- Mysql
 
 
 ## 文件目录
@@ -41,7 +39,7 @@ fork源：[southerncross/vue-express-dev-boilerplate](https://github.com/souther
 │   ├── client
 │   │   ├── App.vue
 │   │   ├── components
-│   │   │   └── Hello.vue
+│   │   │   └── navbar.vue
 │   │   │── static
 │   │   │── router
 │   │   │── store
@@ -52,6 +50,9 @@ fork源：[southerncross/vue-express-dev-boilerplate](https://github.com/souther
 │       ├── config
 │       ├── dao
 │       ├── model
+│          └── clinicModel.js
+│          ├── freshModel.js
+│          ├── getDataModel.js
 │       ├── router
 │       ├── public
 │       │   └── favicon.ico

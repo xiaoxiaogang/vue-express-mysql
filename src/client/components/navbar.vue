@@ -1,9 +1,11 @@
 <template>
   <div>
-    <van-tabs @change="gotoPage">
+    <van-sticky>
+    <van-tabs @change="gotoPage" class="navbar-style" title-active-color="#07c160" color="#07c160" v-model="active">
       <van-tab v-for="(item, index) in navArray" :title="item" :key="index" >
       </van-tab>
     </van-tabs>
+    </van-sticky>
   </div>
 </template>f
 
@@ -17,20 +19,33 @@ export default {
         // preserves its current state and we are modifying
         // its initial state.
           message:'',
-          navArray: ['义诊', '物流', '义诊'],
+          navArray: ['信息上报', '信息汇总' ,'义诊',  '其他'],
+          active: 0
       }
   },
+    watch: {
+
+    },
     created() {
+        if (this.$route.name === 'fresh22') {
+            this.active = 1
+        }
     },
     methods: {
         gotoPage (name, title) {
-            console.log('name:', name);
-            switch (name) {
+            console.log('name:', title);
+            switch (title) {
                 case '义诊':
                     this.$router.push('free')
                     break;
-                case '物流':
-                    this.$router.push('bb')
+                case '信息上报':
+                    this.$router.push('child')
+                    break;
+                case '信息汇总':
+                    this.$router.push('infoList')
+                    break;
+                case '其他':
+                    this.$router.push('fresh22')
                     break;
                 default:
                     break;
@@ -41,12 +56,10 @@ export default {
     }
 }
 </script>
-<style scoped>
-  .list{
-    float: left;
-    width: 100%;
-    text-align: center;
-    padding: 3px 0;
+<style lang="less">
+  @import  "../../client/static/color.less";
+  .navbar-style{
+    /*position: fixed;*/
   }
 
 </style>

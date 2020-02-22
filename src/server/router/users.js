@@ -1,35 +1,34 @@
 var express = require('express');
 
-var userModel = require("../model/freshModel.js");
+var userModel = require("../model/getDataModel.js");
 
 var router = express.Router();
-var app = express();
+
+var  aa =  JSON.stringify({
+    'success': '1',
+    'message' : '操作成功',
+    'result': []
+});
 
 /* GET users listing. */
 router.get('/', function(req, res, next) {
   res.send('respond with a resource:'+req.questTime);
 });
-router.get('/cc', function(req, res, next) {
-    res.send('respond with a resourccccc:'+req.questTime);
-});
 router.get('/addData',  async function (req, res, next) {
-    var random = Math.floor(Math.random()*100);
-    var name = 'wangg'+random;
-    var value = '1'+random;
-
-    var ret = await userModel.addNewData(name, value, res);
-    console.log('aaaaa===ret:', ret);
-    res.send(ret);
+    console.log('reqd:', req.query);
+  //  var ret = await userModel.addNewData(req.query,  res);
+    //console.log('aaaaaqqq===ret:', ret);
+   res.send(aa);
 });
 
 router.get('/getAllData',  async function (req, res, next) {
-    var ret = await userModel.getData(res);
+    var ret = await userModel.getData(req, res);
     console.log('aaaaa===ret:', ret);
     res.send(ret);
 });
 
 router.get('/deleteData',  async function (req, res, next) {
-    var ret = await userModel.deleteData(req, res);
+    var ret = await userModel.deleteData(req.query, res);
     console.log('aaaaa===ret:', ret);
     res.send(ret);
 });
